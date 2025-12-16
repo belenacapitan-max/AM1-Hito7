@@ -1,0 +1,42 @@
+Create CoordinateSystem LunaMJ2000Ec;
+LunaMJ2000Ec.Origin = Luna;
+LunaMJ2000Ec.Axes   = MJ2000Ec;
+
+Create Spacecraft qwd;
+Create ForceModel FM;
+Create Propagator Prop;
+Create ReportFile DefaultReportFile;
+
+qwd.DateFormat = UTCGregorian;
+qwd.Epoch = '01 Jan 2030 12:00:00.000';
+qwd.CoordinateSystem = LunaMJ2000Ec;
+qwd.DisplayStateType = Cartesian;
+qwd.X  = 7000.0;
+qwd.Y  = 0.0;
+qwd.Z  = 0.0;
+qwd.VX = 0.0;
+qwd.VY = 7.5;
+qwd.VZ = 0.0;
+
+FM.CentralBody   = Earth;
+FM.PrimaryBodies = {Earth};
+FM.Drag = None;
+FM.SRP  = Off;
+
+Prop.Type            = RungeKutta89;
+Prop.FM              = FM;
+Prop.InitialStepSize = 10.0;
+Prop.Accuracy        = 0.0001;
+Prop.MinStep         = 0.01;
+Prop.MaxStep         = 300.0;
+Prop.MaxStepAttempts = 50;
+
+DefaultReportFile.Filename = 'DefaultReportFile.txt';
+DefaultReportFile.WriteHeaders = true;
+DefaultReportFile.Precision = 16;
+DefaultReportFile.Add = {qwd.ElapsedDays, qwd.X, qwd.Y, qwd.Z, qwd.VX, qwd.VY, qwd.VZ};
+
+BeginMissionSequence;
+Report DefaultReportFile qwd.ElapsedDays qwd.X qwd.Y qwd.Z qwd.VX qwd.VY qwd.VZ;
+Propagate Prop(qwd) {qwd.ElapsedDays = 1.0};
+Report DefaultReportFile qwd.ElapsedDays qwd.X qwd.Y qwd.Z qwd.VX qwd.VY qwd.VZ;

@@ -1,0 +1,58 @@
+=== GENERAL ===
+Nombre nave: qwd
+Cuerpo central: Luna
+Sistema de referencia: Ecliptico
+Formato de tiempo: UTC
+
+=== SPACECRAFT ===
+Sistema de coordenadas: Cartesianas
+x: 
+y: 
+z: 
+vx: 
+vy: 
+vz: 
+Masa seca: 
+Masa combustible: 
+Formato epoch: UTC
+
+=== TIEMPO ===
+Fecha inicio: 
+Fecha final: 
+
+=== PROPAGATE ===
+Tipo de integrador: RungeKutta89
+Tamano de paso inicial: 
+Precision (accuracy): 
+Paso minimo: 
+Paso maximo: 
+Intentos max. paso: 
+Cuerpo central: Tierra
+Cuerpo primario: Tierra
+Modelo gravitatorio: JGM-2
+Grado: 
+Orden: 
+STM Limit: 
+Atmosfera: None
+Modelo de arrastre: Spherical
+
+=== IMPULSIVE BURN ===
+Sistema de coordenadas: Local
+Origen: Tierra
+Axes: VNB
+Delta V Element 1: 
+Delta V Element 2: 
+Delta V Element 3: 
+Tiempo burn: 
+
+=== IMPULSIVE BURN 2 ===
+Sistema de coordenadas: Local
+Origen: Tierra
+Axes: VNB
+Delta V Element 1: 
+Delta V Element 2: 
+Delta V Element 3: 
+Tiempo burn: 
+
+=== REPORTFILE ===
+Nombre del archivo de reporte: ReportFile
